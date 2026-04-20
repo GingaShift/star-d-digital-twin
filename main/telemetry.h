@@ -9,6 +9,7 @@ typedef struct {                            //BYTE SIZE
     uint16_t sequence_order;                //
     uint16_t packet_length;                 //
 } CCSDS_Header;                             //6 bytes
+
 typedef struct {
     CCSDS_Header header;
     uint32_t timestamp;         //Internal clock timestamp
