@@ -7,8 +7,7 @@ typedef enum{
     MODE_NG,
     MODE_NF,
     MODE_NE,
-    MODE_D,
-    MODE_S
+    MODE_FB
 } software_mode_t;
 
 software_mode_t software_mode_get(void);

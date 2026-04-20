@@ -30,10 +30,12 @@ void mode_execute(software_mode_t mode)
             break;
         case MODE_NE:
             telemetry_task();
+            if (rs422_SOE_get() == false)
+            {
+                mode = MODE_NF;
+            }
             break;
-        case MODE_D:
-            break;
-        case MODE_S:
+        case MODE_FB:
             break;
         default:
             mode = MODE_NF;

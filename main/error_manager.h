@@ -2,7 +2,7 @@
 #define ERROR_MANAGER_H
 
 #include <stdint.h>
-                                                                        //ERROR FLAG BIT POSITION (because defined as enum)
+                                                                        //ERROR FLAG BIT POSITION (defined as enum)
 typedef enum {
     ERROR_NONE = 0,             //no error                              1
     ERROR_CAMERA_REC,           //camera                                2
@@ -10,9 +10,11 @@ typedef enum {
     ERROR_SENSOR_INVALID,       //                                      4
     ERROR_GENTEMP_SENSOR_FAIL,  //temperature read and control          5
     ERROR_GENTEMP_CRITICAL,     //                                      6    
-    ERROR_PVTEMP_SENSOR_FAIL,   //                                      7
-    ERROR_PVTEMP_CONTROL_FAIL,  //                                      8
-    ERROR_PVTEMP_CRITICAL,      //                                      9
+    ERROR_MFCTEMP_SENSOR_FAIL,  //                                      7
+    ERROR_MFCTEMP_CONTROL_FAIL, //                                      8
+    ERROR_MFCTEMP_CRITICAL,     //                                      9
+    ERROR_SLF35_SENSOR_FAIL,    //Fluidic                               10
+    ERROR_ABP_SENSOR_FAIL,      //                                      11
     ERROR_INTERFACE_RS422,      //interface issues                      10
     ERROR_INTERFACE_SPI,        //                                      11
     ERROR_INTERFACE_UART,       //                                      12
@@ -23,6 +25,9 @@ typedef enum {
     ERROR_CPU                   //flight computer issues                17
 } error_flag_t;
 
+const char* error_to_string(error_flag_t error);
+void raise_error(error_flag_t error);
+void remove_error(error_flag_t error);
 uint32_t get_error_flags(void);
 
 #endif
